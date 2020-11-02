@@ -337,7 +337,7 @@ func (p *Printer) StartDocument(name, datatype string) error {
 	return StartDocPrinter(p.h, 1, &d)
 }
 
-func (p *Printer) StartDocument(name string) error {
+func (p *Printer) StartDocumentPrinter(name string) error {
 	d := DOC_INFO_1{
 		DocName:    &(syscall.StringToUTF16(name))[0],
 		OutputFile: nil,
