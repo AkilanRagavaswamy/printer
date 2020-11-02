@@ -337,6 +337,15 @@ func (p *Printer) StartDocument(name, datatype string) error {
 	return StartDocPrinter(p.h, 1, &d)
 }
 
+func (p *Printer) StartDocument(name string) error {
+	d := DOC_INFO_1{
+		DocName:    &(syscall.StringToUTF16(name))[0],
+		OutputFile: nil,
+		Datatype:   nil,
+	}
+	return StartDocPrinter(p.h, 1, &d)
+}
+
 // StartRawDocument calls StartDocument and passes either "RAW" or "XPS_PASS"
 // as a document type, depending if printer driver is XPS-based or not.
 func (p *Printer) StartRawDocument(name string) error {
